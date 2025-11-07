@@ -1,0 +1,73 @@
+﻿@page
+@model Auth.Pages.Auth.SignUp.IndexModel
+@{
+}
+
+<!DOCTYPE html>
+<html lang="xhtml" class="js">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="author" content="Softnio">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="shortcut icon" href="./images/favicon.png">
+    <title>Althea</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="min-h-screen flex items-center justify-center bg-gray-50">
+
+    <div class="w-full max-w-md bg-white shadow-lg rounded-2xl p-8">
+        <h2 class="text-2xl font-semibold text-center mb-6">Create your account</h2>
+
+        @if (!string.IsNullOrEmpty(Model.ErrorMessage))
+        {
+            <div class="mb-4 text-sm text-red-600 bg-red-50 border border-red-200 p-2 rounded">
+                @Model.ErrorMessage
+            </div>
+        }
+
+        <form method="post" class="space-y-5">
+
+            @Html.AntiForgeryToken()
+         @*    <div>
+                <label asp-for="Input.FullName" class="block text-sm font-medium text-gray-700">Full Name</label>
+                <input asp-for="Input.FullName" type="text" required
+                       class="w-full mt-1 border-gray-300 rounded-md shadow-sm focus:ring-sky-500 focus:border-sky-500" />
+                <span asp-validation-for="Input.FullName" class="text-sm text-red-600"></span>
+            </div> *@
+
+            <div>
+                <label asp-for="Input.Email" class="block text-sm font-medium text-gray-700">Email</label>
+                <input asp-for="Input.Email" name="Input.Email" type="email" required
+                       class="w-full mt-1 border-gray-300 rounded-md shadow-sm focus:ring-sky-500 focus:border-sky-500" />
+                <span asp-validation-for="Input.Email" class="text-sm text-red-600"></span>
+            </div>
+
+            <div>
+                <label asp-for="Input.Password" class="block text-sm font-medium text-gray-700">Password</label>
+                <input asp-for="Input.Password" name="Input.Password" type="password" required
+                       class="w-full mt-1 border-gray-300 rounded-md shadow-sm focus:ring-sky-500 focus:border-sky-500" />
+                <span asp-validation-for="Input.Password" class="text-sm text-red-600"></span>
+            </div>
+
+            <div>
+                <label asp-for="Input.ConfirmPassword" class="block text-sm font-medium text-gray-700">Confirm Password</label>
+                <input asp-for="Input.ConfirmPassword" name="Input.ConfirmPassword" type="password" required
+                       class="w-full mt-1 border-gray-300 rounded-md shadow-sm focus:ring-sky-500 focus:border-sky-500" />
+                <span asp-validation-for="Input.ConfirmPassword" class="text-sm text-red-600"></span>
+            </div>
+
+            <button type="submit"
+                    class="w-full bg-sky-600 text-white py-2 px-4 rounded-md hover:bg-sky-700 transition">
+                Register
+            </button>
+        </form>
+
+        <p class="mt-6 text-center text-sm text-gray-500">
+            Already have an account?
+            <a href="/Account/Login" class="text-sky-600 hover:underline">Login</a>
+        </p>
+    </div>
+
+</body>
+</html>
