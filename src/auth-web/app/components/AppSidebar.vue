@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { SidebarProps } from './ui/sidebar'
+import type { SidebarProps } from '@/components/shadcn/components/ui/sidebar'
 
 import {
   AudioWaveform,
@@ -24,7 +24,7 @@ import {
   SidebarFooter,
   SidebarHeader,
   SidebarRail,
-} from '@/components/ui/sidebar'
+} from '@/components/shadcn/components/ui/sidebar'
 
 const props = withDefaults(defineProps<SidebarProps>(), {
   collapsible: "icon",

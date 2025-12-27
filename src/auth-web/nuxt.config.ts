@@ -21,6 +21,6 @@ export default defineNuxtConfig({
      * Directory that the component lives in.
      * @default "./components/ui"
      */
-    componentDir: './app/components/ui',
+    componentDir: './app/components/shadcn/components/ui',
   }
 })
