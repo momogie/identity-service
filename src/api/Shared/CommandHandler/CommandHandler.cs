@@ -39,17 +39,15 @@ public abstract class CommandHandler : ICommandHandler
         return ServiceProvider = serviceProvider;
     }
 
-    protected long UserId
+    protected string UserId
     {
         get
         {
             var usrId = HttpContext.User.FindFirst("UserId")?.Value;
             if (usrId == null)
-                return -1;
+                return null;
 
-            _ = long.TryParse(usrId, out long userId);
-
-            return userId;
+            return usrId;
         }
     }
 

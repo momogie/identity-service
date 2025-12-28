@@ -93,9 +93,14 @@ public static class Extensions
                 var routeBuilder = MapRoute(app, path, handlerType.HttpAttribute, handlerType.Type);
 
                 if (handlerType.IsRequireAuthorization)
-                    routeBuilder.RequireAuthorization(handlerType.AuthorizeAttribute.AuthenticationSchemes);
+                {
+                    if (!string.IsNullOrWhiteSpace(handlerType.AuthorizeAttribute.AuthenticationSchemes))
+                        routeBuilder.RequireAuthorization(handlerType.AuthorizeAttribute.AuthenticationSchemes);
+                    else
+                        routeBuilder.RequireAuthorization();
+                }
 
-                MapOpenApi(app, handlerType.Type, handlerType.HttpAttribute.Group, path, routeBuilder);
+                //MapOpenApi(app, handlerType.Type, handlerType.HttpAttribute.Group, path, routeBuilder);
             }
         }
     }

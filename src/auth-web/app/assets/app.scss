@@ -1,0 +1,52 @@
+
+@import url("https://fonts.googleapis.com/css2?family=Outfit&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Oxanium&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Lora&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Fira Code&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=DM Sans&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Open Sans&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=IBM Plex Mono&display=swap");
+
+
+
+:root {
+  --radius: 0.625rem;
+}
+
+.multiselect  {
+  // height: 36px;
+  border-radius: calc(var(--radius) - 2px)!important;
+}
+
+.multiselect {
+  font-size: 0.875rem;
+  background-color: transparent;
+    border-color: var(--input);
+}
+
+.multiselect-single-label-text, .multiselect-option {
+  font-size: 0.875rem!important;
+}
+
+.multiselect-placeholder {
+  white-space: nowrap;
+}
+
+[data-slot="button"] {
+  cursor: pointer;
+}
+
+.swal2-popup {
+  border-radius: 15px;
+  width: 25em;
+}
+
+.swal2-confirm {
+  background-color: var(--primary)!important;
+  width: 150px;
+}
+
+.swal2-cancel {
+  width: 150px;
+}

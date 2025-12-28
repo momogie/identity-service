@@ -859,6 +859,7 @@ public class DbView
     public int Execute(string sql, object param = null)
     {
 #if DEBUG
+#pragma warning disable CS0168 // Variable is declared but never used
         try
         {
             return Connection.Execute(sql, param, Transaction);
@@ -867,8 +868,11 @@ public class DbView
         {
             throw;
         }
+#pragma warning restore CS0168 // Variable is declared but never used
 #endif
+#pragma warning disable CS0162 // Unreachable code detected
         return Connection.Execute(sql, param, Transaction);
+#pragma warning restore CS0162 // Unreachable code detected
     }
 
     internal class Parameter

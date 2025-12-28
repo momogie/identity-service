@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace Identity.Api.Auth.Handlers;
 
-[Authorize(AuthenticationSchemes = "Cookies")]
+[Authorize]
 [Get("/auth/logout", "/auth/signout")]
 public class LogoutHandler(IHttpContextAccessor httpContextAccessor) : CommandHandler
 {

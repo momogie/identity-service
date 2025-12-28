@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace Identity.Pages.Auth;
 
-[Authorize(AuthenticationSchemes = "Cookies")]
+[Authorize]
 public class SignOutModel : PageModel
 {
     public ActionResult OnGet()

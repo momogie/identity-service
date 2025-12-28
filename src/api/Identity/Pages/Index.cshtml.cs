@@ -4,10 +4,11 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace Identity.Pages;
 
-[Authorize(AuthenticationSchemes = "Cookies")]
+[Authorize]
 public class IndexModel : PageModel
 {
     public void OnGet()
     {
+        var user = User.Identity.IsAuthenticated;
     }
 }

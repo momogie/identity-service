@@ -94,11 +94,13 @@ public abstract class ModuleDbContext : DbContext
     public string GetViewName(string nameSpace, string typeName)
     {
         return $"{nameSpace}_{PluralizationProvider.Pluralize(typeName)}";
-        if (ViewList.ContainsKey(typeName))
+#pragma warning disable CS0162 // Unreachable code detected
+        if (ViewList.TryGetValue(typeName, out (string schema, Type type) value))
         {
-            var (schema, type) = ViewList[typeName];
+            var (schema, type) = value;
             return $"{schema}_{PluralizationProvider.Pluralize(type.Name)}";
         }
+#pragma warning restore CS0162 // Unreachable code detected
         throw new Exception($"View type with name {typeName} is not registered");
     }
 
@@ -221,7 +223,9 @@ public class ModuleDbContext<T> : ModuleDbContext, IModuleDbContext where T : Db
         return Connection.ExecuteScalar<TA>(sql, param, Database.CurrentTransaction?.GetDbTransaction());
     }
 
+#pragma warning disable CS0108 // Member hides inherited member; missing new keyword
     public DataTable List(string sql, object param = null)
+#pragma warning restore CS0108 // Member hides inherited member; missing new keyword
     {
         var reader = Connection.ExecuteReader(sql, param, Database.CurrentTransaction?.GetDbTransaction());
         var dt = new DataTable("DataView");
@@ -287,6 +291,6 @@ public class HeaderDbContextConnectionProvider : IDbContextConnectionProvider
             }
         }
         return "";
-        return _configuration.GetConnectionString("Default") ?? throw new Exception("Default connection string is missing!");
+        //return _configuration.GetConnectionString("Default") ?? throw new Exception("Default connection string is missing!");
     }
 }
